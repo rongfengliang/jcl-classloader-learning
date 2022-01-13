@@ -33,22 +33,6 @@ public class LoginServiceA {
         JarClassLoader jcl = new JarClassLoader();
         String requestURL = String.format("http://localhost:8080/userlogin-%d-SNAPSHOT.jar",version);
         jcl.add(new URL(requestURL));
-        jcl.addLoader(new ProxyClassLoader() {
-            @Override
-            public Class loadClass(String s, boolean b) {
-                return null;
-            }
-
-            @Override
-            public InputStream loadResource(String s) {
-                return null;
-            }
-
-            @Override
-            public URL findResource(String s) {
-                return null;
-            }
-        });
         logger.info("load class from {}",requestURL);
         JclObjectFactory factory = JclObjectFactory.getInstance();
         //Create object of loaded class
